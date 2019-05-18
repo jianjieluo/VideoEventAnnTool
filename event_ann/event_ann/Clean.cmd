@@ -1,0 +1,1 @@
+for /d /r . %%d in (bin obj AppPackages BundleArtifacts) do @if exist "%%d" rd /s/q "%%d"
