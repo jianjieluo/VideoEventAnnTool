@@ -102,7 +102,7 @@ namespace event_ann.ViewModels
         {
             if (IsLabelValid(st, ed))
             {
-                this.allItems.Add(new Models.EventItem(st, ed));
+                this.allItems.Add(new Models.EventItem(st, ed, caption));
             }
         }
 

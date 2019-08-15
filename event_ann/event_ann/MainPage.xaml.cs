@@ -52,6 +52,7 @@ namespace event_ann
         private int video_num;
         private int db_cursor;
         private bool isInited;
+        private string event_label;
 
         private bool isNextIndexOutRange
         {
@@ -261,7 +262,12 @@ namespace event_ann
         private void OnClickConfirm(object sender, RoutedEventArgs e)
         {
             if (isInited)
-                ViewModel.AddEventItem(ViewInfo.Start, ViewInfo.End);
+            {
+                ViewModel.AddEventItem(ViewInfo.Start, ViewInfo.End, event_label);
+                //  reset the event label 
+                dafault_rb.IsChecked = true;
+                event_label = "0";
+            }
         }
 
         private void OnClickDelete(object sender, RoutedEventArgs e)
@@ -403,6 +409,15 @@ namespace event_ann
             {
                 await InitializeAppAsync();
                 isInited = true;
+            }
+        }
+
+        private void LabelRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                event_label = rb.Tag.ToString();
             }
         }
     }

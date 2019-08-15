@@ -20,156 +20,182 @@
             <Grid.Resources>
                 <SolidColorBrush x:Key="brush" Color="Silver"/>
             </Grid.Resources>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="0.5*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <MediaElement x:Name="mediaPlayer" AreTransportControlsEnabled="True" AutoPlay="False">
-                    <MediaElement.TransportControls>
-                        <MediaTransportControls IsCompact="True" 
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" BorderBrush="{StaticResource brush}" BorderThickness="1 1 1 1">
+                <StackPanel Margin="20" Orientation="Vertical">
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" x:Name="dafault_rb" Content="0 -- 射门 (default)" Tag="0" Checked="LabelRadioButton_Checked"  IsChecked="True"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="1 -- 黄牌/红牌" Tag="1" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="2 -- 换人" Tag="2" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="3 -- 犯规" Tag="3" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="4 -- 守门员接发球" Tag="4" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="5 -- 角球" Tag="5" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="6 -- 界外球" Tag="6" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="7 -- 任意球" Tag="7" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="8 -- 裁判与队员对话" Tag="8" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="9 -- 越位" Tag="9" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="10 -- 球门线附近争抢" Tag="10" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="11 -- 人墙" Tag="11" Checked="LabelRadioButton_Checked"/>
+                    <RadioButton FontSize="18" Padding="6,4,0,0" Margin="0,0,0,10" Content="12 -- 队员之间对话" Tag="12" Checked="LabelRadioButton_Checked"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <MediaElement x:Name="mediaPlayer" AreTransportControlsEnabled="True" AutoPlay="False">
+                        <MediaElement.TransportControls>
+                            <MediaTransportControls IsCompact="True" 
                                 IsZoomButtonVisible="False" IsZoomEnabled="False"
                                 IsFullWindowButtonVisible="False" IsFullWindowEnabled="False"/>
-                    </MediaElement.TransportControls>
-                </MediaElement>
-            </Grid>
-            <Grid Grid.Row="1" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
+                        </MediaElement.TransportControls>
+                    </MediaElement>
+                </Grid>
+                <Grid Grid.Row="1" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Grid.Column="0">
-                        <Button x:Name="btn_st" Content="Start time"
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Button x:Name="btn_st" Content="Start time"
                                   Click="OnClickStart" ClickMode="Press"
                                   Margin="10" Width="150" Height="auto"
                                   FontSize="30"
                                   HorizontalAlignment="Center"
                                   Foreground="Black" />
-                    </Grid>
-                    <Grid Grid.Row="1" Grid.Column="0">
-                        <Button x:Name="btn_ed" Content="End time"
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Button x:Name="btn_ed" Content="End time"
                                   Click="OnClickEnd" ClickMode="Press"
                                   Margin="10" Width="150" Height="auto"
                                   FontSize="30"
                                   HorizontalAlignment="Center"
                                   Foreground="Black" />
-                    </Grid>
-                    <Grid Grid.Row="0" Grid.Column="1">
-                        <TextBlock Text="{x:Bind ViewInfo.Start_str, Mode=OneWay}" Width="auto"
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="1">
+                            <TextBlock Text="{x:Bind ViewInfo.Start_str, Mode=OneWay}" Width="auto"
                                         IsTextSelectionEnabled="True" TextWrapping="Wrap"
                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                         FontSize="30"/>
-                    </Grid>
-                    <Grid Grid.Row="1" Grid.Column="1">
-                        <TextBlock Text="{x:Bind ViewInfo.End_str, Mode=OneWay}" Width="auto"
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="{x:Bind ViewInfo.End_str, Mode=OneWay}" Width="auto"
                                         IsTextSelectionEnabled="True" TextWrapping="Wrap"
                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                         FontSize="30"/>
-                    </Grid>
-                    <Grid Grid.Row="2" Grid.Column="0" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
-                        <Button x:Name="btn_confirm" Content="Confirm"
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="0" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
+                            <Button x:Name="btn_confirm" Content="Confirm"
                                   Click="OnClickConfirm" ClickMode="Press"
                                   Margin="10" Width="150" Height="auto"
                                   FontSize="30" Background="LightGreen"
                                   HorizontalAlignment="Center"
                                   Foreground="Black" />
-                    </Grid>
-                    <Grid Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
-                        <Button x:Name="btn_del" Content="Delete"
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
+                            <Button x:Name="btn_del" Content="Delete"
                                   Click="OnClickDelete" ClickMode="Press"
                                   Margin="10" Width="150" Height="auto"
                                   FontSize="30" Background="Tomato"
                                   HorizontalAlignment="Center"
                                   Foreground="Black" />
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid Grid.Column="1" BorderBrush="{StaticResource brush}" BorderThickness="5 5 5 5">
-                    <ListView x:Name="EventItemView" IsItemClickEnabled="True" ItemClick="EventItem_Clicked"
+                    <Grid Grid.Column="1" BorderBrush="{StaticResource brush}" BorderThickness="5 5 5 5">
+                        <ListView x:Name="EventItemView" IsItemClickEnabled="True" ItemClick="EventItem_Clicked"
                       ItemsSource="{x:Bind ViewModel.AllItems}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="md:EventItem">
-                                <UserControl>
-                                    <TextBlock Text="{x:Bind AnnShowString}" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="25" LineHeight="20" TextWrapping="Wrap" />
-                                </UserControl>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="1">
-                        <Button x:Name="btn_export"
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="md:EventItem">
+                                    <UserControl>
+                                        <TextBlock Text="{x:Bind AnnShowString}" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="25" LineHeight="20" TextWrapping="Wrap" />
+                                    </UserControl>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Button x:Name="btn_export"
                                   Click="OnClickExport2Foloder" ClickMode="Press"
                                   Margin="5" Width="150" Height="100"
                                   HorizontalAlignment="Center"
                                   Foreground="Black">
-                            <TextBlock Text="导出指定目录" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"/>
-                        </Button>
-                    </Grid>
-                    <Grid Grid.Row="0">
-                        <Button x:Name="btn_init"
+                                <TextBlock Text="导出指定目录" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"/>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Row="0">
+                            <Button x:Name="btn_init"
                                   Click="OnClickInitilze" ClickMode="Press"
                                   Margin="5" Width="150" Height="100"
                                   HorizontalAlignment="Center"
                                   Foreground="Black">
-                            <TextBlock Text="初始化路径" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"/>
-                        </Button>
-                    </Grid>
-                    <Grid Grid.Row="2">
-                        <Button x:Name="btn_config"
+                                <TextBlock Text="初始化路径" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"/>
+                            </Button>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Button x:Name="btn_config"
                                   Click="OnClickShowLocalFolder" ClickMode="Press"
                                   Margin="5" Width="150" Height="100"
                                   HorizontalAlignment="Center"
                                   Foreground="Black">
-                            <TextBlock Text="显示缓存目录" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"/>
-                        </Button>
+                                <TextBlock Text="显示缓存目录" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"/>
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-            <Grid Grid.Row="2" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Button x:Name="btn_previous" Content="上一个"
+                <Grid Grid.Row="2" BorderBrush="{StaticResource brush}" BorderThickness="0 1 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Button x:Name="btn_previous" Content="上一个"
                                   Click="OnClickPrevious" ClickMode="Press"
                                   Margin="10" Width="150" Height="50"
                                   FontSize="25"
                                   HorizontalAlignment="Center"
                                   Foreground="Black" />
-                </Grid>
-                <Grid Grid.Column="1">
-                    <TextBlock x:Name="ProcessInfo" Text="{x:Bind ViewInfo.Process, Mode=OneWay}" Width="auto"
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <TextBlock x:Name="ProcessInfo" Text="{x:Bind ViewInfo.Process, Mode=OneWay}" Width="auto"
                                         IsTextSelectionEnabled="True" TextWrapping="Wrap"
                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                         FontSize="25"/>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Button x:Name="btn_next" Content="下一个"
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Button x:Name="btn_next" Content="下一个"
                                   Click="OnClickNext" ClickMode="Press"
                                   Margin="10" Width="150" Height="50"
                                   FontSize="25"
                                   HorizontalAlignment="Center"
                                   Foreground="Black" />
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
